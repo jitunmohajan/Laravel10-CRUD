@@ -8,7 +8,9 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index(){
-        $products=Product::get();
+        // $products=Product::get();
+        // $products=Product::latest()->get(); //latest use to show latest values that has been created
+        $products=Product::latest()->paginate(5); 
         return view('products.index',['products' => $products]);
         // return view('products.index',['products' => Product::get()]);
     }
